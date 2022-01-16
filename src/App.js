@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react'
+import {Octokit} from '@octokit/rest'
+
+const octokit = new Octokit()
+
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    octokit.rest.users.getByUsername({
+      username: 'lawson-ng'
+    })
+      .then(setUser)
+      .catch((error) => console.log('error', error))
+  }, [])
+
+  console.log('user', user)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Hello I'm lawson</h1>
+      <p>This is my personal blog</p>
+    </>
   );
 }
 
