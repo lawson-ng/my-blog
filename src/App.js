@@ -1,46 +1,46 @@
-import {useState, useEffect} from 'react';
-import {Octokit} from '@octokit/rest';
-import {GoMarkGithub} from 'react-icons/go';
-import {AiFillTwitterCircle} from 'react-icons/ai';
-import MUISwitch from './switch'
-const octokit = new Octokit();
+import React, { useState, useEffect } from "react"
+import { Octokit } from "@octokit/rest"
+import { GoMarkGithub } from "react-icons/go"
+import { AiFillTwitterCircle } from "react-icons/ai"
+import MUISwitch from "./switch"
+const octokit = new Octokit()
 
-const BASE_TWITTER = 'https://twitter.com/';
+const BASE_TWITTER = "https://twitter.com/"
 
 const USER = {
-  avatar_url: '',
-  name: 'Lawson',
-  bio: '',
-  html_url: '',
-  twitter_username: '',
-};
+  avatar_url: "",
+  name: "Lawson",
+  bio: "",
+  html_url: "",
+  twitter_username: "",
+}
 
 const THEME = {
   dark: {
-    bg: 'dark',
-    color: 'white',
+    bg: "dark",
+    color: "white",
   },
   light: {
-    bg: 'white',
-    color: 'dark'
+    bg: "white",
+    color: "dark",
   },
-};
+}
 
 function App() {
-  const [user, setUser] = useState(USER);
-  const [theme, setTheme] = useState(THEME.dark);
+  const [user, setUser] = useState(USER)
+  const [theme, setTheme] = useState(THEME.dark)
   const [checked, setChecked] = useState(false)
 
   useEffect(() => {
     octokit.rest.users
       .getByUsername({
-        username: 'lawson-ng',
+        username: "lawson-ng",
       })
-      .then(result => {
-        setUser(result.data);
+      .then((result) => {
+        setUser(result.data)
       })
-      .catch(error => console.log('error', error));
-  }, []);
+      .catch((error) => console.log("error", error))
+  }, [])
 
   useEffect(() => {
     const newTheme = checked ? THEME.dark : THEME.light
@@ -53,7 +53,7 @@ function App() {
     <div className={`min-vh-100 bg-${theme.bg} m-0 p-0`}>
       <div className="container">
         <div className="row justify-content-end pt-2">
-          <MUISwitch  onChange={(e) => setChecked(!checked)} />
+          <MUISwitch onChange={(e) => setChecked(!checked)} />
         </div>
 
         <div className="row">
@@ -77,7 +77,7 @@ function App() {
               <a
                 href={BASE_TWITTER + user.twitter_username}
                 className={`${text} mx-1`}
-                >
+              >
                 <AiFillTwitterCircle size={40} />
               </a>
             </div>
@@ -85,7 +85,7 @@ function App() {
         </section>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
