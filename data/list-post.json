@@ -2,6 +2,7 @@
   {
     "title": "Javascript Cơ Bản",
     "date": "1647081813066",
-    "tags": ["javascript", "basic"]
+    "tags": ["javascript", "basic"],
+    "detail": "js-basic.md" 
   }
 ]
