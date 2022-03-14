@@ -1,45 +1,55 @@
-import React, { useState, useEffect } from "react"
-import { Octokit } from "@octokit/rest"
-import { GoMarkGithub } from "react-icons/go"
-import { AiFillTwitterCircle } from "react-icons/ai"
-import MUISwitch from "./switch"
-const octokit = new Octokit()
+import React, { useState, useEffect } from 'react'
+import { GoMarkGithub } from 'react-icons/go'
+import { AiFillTwitterCircle } from 'react-icons/ai'
 
-const BASE_TWITTER = "https://twitter.com/"
+import Post from './components/Post'
+import MUISwitch from './Switch'
+import GithubRest from './services/Github'
+import { useNavigate } from 'react-router-dom'
+
+const BASE_TWITTER = 'https://twitter.com/'
 
 const USER = {
-  avatar_url: "",
-  name: "Lawson",
-  bio: "",
-  html_url: "",
-  twitter_username: "",
+  avatar_url: '',
+  name: 'Lawson',
+  bio: '',
+  html_url: '',
+  twitter_username: '',
 }
 
 const THEME = {
   dark: {
-    bg: "dark",
-    color: "white",
+    bg: 'dark',
+    color: 'white',
   },
   light: {
-    bg: "white",
-    color: "dark",
+    bg: 'white',
+    color: 'dark',
   },
 }
 
+const github = new GithubRest()
+
 function App() {
+  let navigate = useNavigate()
   const [user, setUser] = useState(USER)
   const [theme, setTheme] = useState(THEME.dark)
   const [checked, setChecked] = useState(false)
+  const [posts, setPosts] = useState([])
+
+  const fetchListPost = async () => {
+    const data = await github.getListPost()
+    setPosts(data)
+  }
+
+  const fetchProfile = async () => {
+    const profile = await github.getProfile()
+    setUser(profile)
+  }
 
   useEffect(() => {
-    octokit.rest.users
-      .getByUsername({
-        username: "lawson-ng",
-      })
-      .then((result) => {
-        setUser(result.data)
-      })
-      .catch((error) => console.log("error", error))
+    fetchListPost()
+    fetchProfile()
   }, [])
 
   useEffect(() => {
@@ -49,6 +59,16 @@ function App() {
 
   const text = `text-${theme.color}`
 
+  const renderPost = (post) => {
+    return (
+      <Post
+        title={post.title}
+        date={post.date}
+        tags={post.tags}
+        onClick={() => navigate(`post/${post.file}`)}
+      />
+    )
+  }
   return (
     <div className={`min-vh-100 bg-${theme.bg} m-0 p-0`}>
       <div className="container">
@@ -83,6 +103,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <section>{posts.map(renderPost)}</section>
       </div>
     </div>
   )
