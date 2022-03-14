@@ -8,7 +8,7 @@
 - The world's most popular programming language.
 - Easy to learn.
 
-```jsx
+```js
 console.log('Javascript')
 ```
 
