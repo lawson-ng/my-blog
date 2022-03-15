@@ -6,7 +6,7 @@ Biến dùng để chứa dữ liệu. Trước khi sử dụng biến ta cần 
 
 
 
-![Hello](/public/value.png)
+![Value](https://github.com/lawson-ng/my-blog/blob/documents/public/value.png?raw=true)
 
 
 
