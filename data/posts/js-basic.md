@@ -104,7 +104,7 @@ const pi = 3.14
 1. **Arithmetic ( Số học )**
 
 
-```jsx
+```js
 const a = 4
 const b = 5
 
@@ -156,7 +156,7 @@ console.log(a /= 'hello');
 // expected output: NaN
 ```
 
-1. **Comparison ( So sánh )**
+2. **Comparison ( So sánh )**
 
 ```jsx
 // == ( So sánh bằng ) double equals
@@ -192,26 +192,6 @@ console.log(x > 8 )
 console.log(x >= 8)
 ```
 
-1. **Conditional ( Điều kiện )**
-- Code
-  
-  ```jsx
-  const checkNumber = (number) => {
-      if (number === 3.14) {
-          return 'PI'
-      } else {
-          return 'not PI'
-      }
-  }
-  ```
-
-- Code (Coditional)
-  
-  ```jsx
-  const checkNumber = (number) => number === 3.14 ? 'PI' : 'not PI'
-  ```
-1. **Logical (Logic )**
-
 #### Strings ( Chuỗi kí tự )
 
 String được sử dụng để thể hiện cho văn bản, chúng được viết bên trong dấu ngoặc.
@@ -222,15 +202,18 @@ const another_name = 'lawson nguyen'
 const text = `something`
 ```
 
-Chúng ta có thể sử dụng dấu nháy đơn `'`, dấu nháy kép `''`, hoặc dấu backticks ` để đánh dấu `string`
+Chúng ta có thể sử dụng quotes (dấu nháy đơn `'`, dấu nháy kép `''`, hoặc dấu backticks \` ) để thể hiện một chuỗi kí tự (`string`)
 
-`'` `''` ` ⇒ quotes
 
  Hầu hết những gì nằm trong quotes là giá trị của một biến string. Nhưng có một số trường hợp đặc biệt ta cần phải chú ý sau:
 
-- Các quotes lồng:
+- ***Các quotes lồng:***
 
-Ví dụ, trong trường hợp chúng ta muốn hiển thị một biến string như thế này  ”hello world”
+Ví dụ, trong trường hợp chúng ta muốn hiển thị một chuỗi kí tự như thế này:  
+
+```
+”hello world”
+```
 
 ⇒ Chúng ta sẽ sử dụng các quotes khác để bọc bên vào chuỗi đó
 
@@ -240,13 +223,16 @@ Ví dụ:
 
 ``"hello world"`` ⇒ sử dụng blackticks bọc ngoài nháy kép
 
-- Thêm kí tự xuống dòng vào chuỗi:
+- ***Thêm kí tự xuống dòng vào chuỗi:***
 
 Ví dụ chúng ta muốn hiển thị một chuỗi như sau:
 
+```
 This is my first line
 
 And this is my second line
+```
+
 
 ```jsx
 Note: 
@@ -256,52 +242,77 @@ mang một ý nghĩa đặc biệt.
 Việc viết dấu gách chéo ngược \ trước một kí tự, chúng ta gọi là escaping
 ```
 
-- `\n`: new line
+```bash
+\n : new line
 
-- `\t` tab
-
-### Array
-
-```jsx
-const a = [1, 2, 3]
-const b = ['a', 'b', 'c']
-const arr_1 = [1, 'a', 'b', 3.14]
-
-console.log(a[0])
-console.log(a[3])
+\t : tab
 ```
 
-- Map
+### Mảng (Array)
+
+Array là tập hợp của những giá trị có cùng hoặc không cùng kiểu dữ liệu
+
+```js
+// Mảng của numbers
+const a = [1, 2, 3]
+
+console.log(a[0]) // 1
+console.log(a[2]) // 3
+console.log(a[3]) // undefined
+
+// Mảng của number và string
+const arr = [1, 'a', 'c']
+```
+
+#### 4 Phương thức sử dụng mảng thông dụng
+
+**Map**
   - Tạo ra một mảng mới có đô dài (length) bằng với độ dài của mảng ban đầu.
   - Mỗi phần tử trong mảng mới được tạo ra bằng việc thực hiện phép biến đổi lên tửng phần tử của mảng ban đầu.
 
-![Screenshot 2022-03-05 at 11.09.20.png](Javascript%20e1e27/Screenshot_2022-03-05_at_11.09.20.png)
+```js
+const arr = [1, 2, 3];
+const double = x => x * 2;
+arr.map(double); // [2, 4, 6]
+```
 
-![Screenshot 2022-03-05 at 11.10.33.png](Javascript%20e1e27/Screenshot_2022-03-05_at_11.10.33.png)
-
-- Filter
+**Filter**
   - Tạo ra một mảng mới có độ dài (length) bằng hoặc nhỏ hơn so với mảng ban đầu.
   - Mỗi phẩn tử trong mảng mới được tạo ra từ những phần tử thoả mãn điều kiện lọc của mảng ban đầu.
 
-![Screenshot 2022-03-05 at 12.26.36.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.26.36.png)
-
-![Screenshot 2022-03-05 at 12.27.11.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.27.11.png)
-
-- Find
+```js
+const arr = [1, 2, 3];
+const isOdd = x => x % 2 === 1;
+arr.filter(isOdd); // [1, 3]
+```
+**Find**
   - Thực hiện việc tìm kiếm lên mảng bằng cách duyệt qua từng phần tử của mảng.
   - Trả về phẩn tử đầu tiên thoả mãn điều kiện tìm kiếm. Nếu không, trả về `undefined`
 
-![Screenshot 2022-03-05 at 12.28.22.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.28.22.png)
+```js
+const arr = [1, 2, 3];
+const isOdd = x => x % 2 === 1;
+arr.find(isOdd); // 1
+```
 
-![Screenshot 2022-03-05 at 12.28.45.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.28.45.png)
+**Reduce**
+- Trả về một giá trị tuỳ biến tuỳ thuộc vào function xử lý được truyền vào và giá trị khởi tạo.
 
-- Reduce
 
-![Screenshot 2022-03-05 at 12.30.39.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.30.39.png)
+```js
+const arr = [1, 2, 3];
 
-![Screenshot 2022-03-05 at 12.31.20.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.31.20.png)
+const sum = (x, y) => x + y;
+arr.reduce(sum, 0); // 6
 
+const increment = (x, y) => [...x, x[x.length - 1] + y];
+arr.reduce(increment, [0]); // [0, 1, 3, 6]
+```
 ### Object
+
+- Là một đối tượng có nhiều thuộc tính (properties). Mỗi thuộc tính được viết dưới dạng (`key: value`).
+- Những thuộc tính của object được viết bên trong dấu ngoặc nhọn `{ }`
+- Các thuộc tính được ngăn cách với nhau bằng dấu phẩy
 
 ```jsx
 const person = {
@@ -315,5 +326,3 @@ person.name
 
 person.job
 ```
-
-[Exercises 1](https://www.notion.so/Exercises-1-60749e2d8c0846f2a5b00be699195cba)
