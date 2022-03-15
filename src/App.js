@@ -3,7 +3,7 @@ import { GoMarkGithub } from 'react-icons/go'
 import { AiFillTwitterCircle } from 'react-icons/ai'
 
 import Post from './components/Post'
-import MUISwitch from './Switch'
+import MUISwitch from './components/Switch'
 import GithubRest from './services/Github'
 import { useNavigate } from 'react-router-dom'
 
