@@ -1,44 +1,30 @@
 # Javascript  Cơ bản
 
-![Untitled](Javascript%20e1e27/Untitled.png)
+## Biến (Variable)
 
-## What is javascript ?
+Biến dùng để chứa dữ liệu. Trước khi sử dụng biến ta cần phải khai báo biến.
 
-- Invented by **Brendan Eich** in 1995.
-- The world's most popular programming language.
-- Easy to learn.
 
-```js
-console.log('Javascript')
-```
 
-## What can it used for ?
+![Hello](/public/value.png)
 
-- Front-end
-- Back-end
-- Mobile apps
-- Desktop apps
-- Add more
 
-![Untitled](Javascript%20e1e27/Untitled%201.png)
 
-## ****JavaScript basics****
-
-### Variables (Biến)
-
-Variables are containers for storing data (storing data values).
-
-In this example, `x`, `y` , `z` are variables.
+Khi báo biến trong javascript:
 
 ```jsx
 let name = "javascript"
 let year = 1995
-let author = "Brendan"
 
+const author = "Brendan"
 const school = 'hcmue'
 ```
 
-### `let` `const`
+### let và const
+
+let va const là những từ khoá dùng để khai báo biến.
+
+
 
 ```jsx
 let x = "John Doe"
@@ -53,10 +39,9 @@ school = 'qưeqwe'
 
 const pi = 3.14
 pi = 3.15
-
 ```
 
-`**function**`
+**Function**
 
 a set of statements that performs a task or calculates a value
 
@@ -66,7 +51,7 @@ function square(number) {
 }
 
 function geating(name) {
-	console.log('Hello ', name)
+    console.log('Hello ', name)
 }
 ```
 
@@ -136,9 +121,9 @@ mang một ý nghĩa đặc biệt.
 Việc viết dấu gách chéo ngược \ trước một kí tự, chúng ta gọi là escaping
 ```
 
- - `\n`: new line
+- `\n`: new line
 
- - `\t` tab
+- `\t` tab
 
 ### Number
 
@@ -242,26 +227,23 @@ console.log(x >= 8)
 ```
 
 1. **Conditional ( Điều kiện )**
-
 - Code
-    
-    ```jsx
-    const checkNumber = (number) => {
-    	if (number === 3.14) {
-    		return 'PI'
-    	} else {
-    		return 'not PI'
-    	}
-    }
-    ```
-    
-- Code (Coditional)
-    
-    ```jsx
-    const checkNumber = (number) => number === 3.14 ? 'PI' : 'not PI'
-    ```
-    
+  
+  ```jsx
+  const checkNumber = (number) => {
+      if (number === 3.14) {
+          return 'PI'
+      } else {
+          return 'not PI'
+      }
+  }
+  ```
 
+- Code (Coditional)
+  
+  ```jsx
+  const checkNumber = (number) => number === 3.14 ? 'PI' : 'not PI'
+  ```
 1. **Logical (Logic )**
 
 ### Array
@@ -276,24 +258,24 @@ console.log(a[3])
 ```
 
 - Map
-    - Tạo ra một mảng mới có đô dài (length) bằng với độ dài của mảng ban đầu.
-    - Mỗi phần tử trong mảng mới được tạo ra bằng việc thực hiện phép biến đổi lên tửng phần tử của mảng ban đầu.
+  - Tạo ra một mảng mới có đô dài (length) bằng với độ dài của mảng ban đầu.
+  - Mỗi phần tử trong mảng mới được tạo ra bằng việc thực hiện phép biến đổi lên tửng phần tử của mảng ban đầu.
 
 ![Screenshot 2022-03-05 at 11.09.20.png](Javascript%20e1e27/Screenshot_2022-03-05_at_11.09.20.png)
 
 ![Screenshot 2022-03-05 at 11.10.33.png](Javascript%20e1e27/Screenshot_2022-03-05_at_11.10.33.png)
 
 - Filter
-    - Tạo ra một mảng mới có độ dài (length) bằng hoặc nhỏ hơn so với mảng ban đầu.
-    - Mỗi phẩn tử trong mảng mới được tạo ra từ những phần tử thoả mãn điều kiện lọc của mảng ban đầu.
+  - Tạo ra một mảng mới có độ dài (length) bằng hoặc nhỏ hơn so với mảng ban đầu.
+  - Mỗi phẩn tử trong mảng mới được tạo ra từ những phần tử thoả mãn điều kiện lọc của mảng ban đầu.
 
 ![Screenshot 2022-03-05 at 12.26.36.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.26.36.png)
 
 ![Screenshot 2022-03-05 at 12.27.11.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.27.11.png)
 
 - Find
-    - Thực hiện việc tìm kiếm lên mảng bằng cách duyệt qua từng phần tử của mảng.
-    - Trả về phẩn tử đầu tiên thoả mãn điều kiện tìm kiếm. Nếu không, trả về `undefined`
+  - Thực hiện việc tìm kiếm lên mảng bằng cách duyệt qua từng phần tử của mảng.
+  - Trả về phẩn tử đầu tiên thoả mãn điều kiện tìm kiếm. Nếu không, trả về `undefined`
 
 ![Screenshot 2022-03-05 at 12.28.22.png](Javascript%20e1e27/Screenshot_2022-03-05_at_12.28.22.png)
 
@@ -309,10 +291,10 @@ console.log(a[3])
 
 ```jsx
 const person = {
-	name: 'lawson',
-	job: 'bug creator',
-	house: null,
-	car: null,
+    name: 'lawson',
+    job: 'bug creator',
+    house: null,
+    car: null,
 }
 
 person.name
