@@ -2,141 +2,107 @@
 
 ## Biến (Variable)
 
-Biến dùng để chứa dữ liệu. Trước khi sử dụng biến ta cần phải khai báo biến.
-
-
+Biến dùng để chứa dữ liệu. Trước khi sử dụng biến ta cần phải khai báo biến. 
 
 ![Value](https://github.com/lawson-ng/my-blog/blob/documents/public/value.png?raw=true)
 
+Cấu trúc khi báo biến:
 
+```js
+<từ khoá> <tên biến> [= <giá trị>]
 
-Khi báo biến trong javascript:
+```
+
+- từ khoá: `let`, hoặc `const` (Ngoài ra ta còn có từ khoá `var` tuy nhiên hiện nay từ khoá này không còn được sử dụng phổ biến.)
+- tên biến: tên của biến mà ta muốn khai báo.
+- = giá trị: giá trị mà ta muốn gán cho biến. Nếu không gán giá trị cho biến thì biến sẽ có giá trị là `undefined`
+
+Ví dụ khai báo biến trong javascript:
 
 ```jsx
-let name = "javascript"
-let year = 1995
+let name = "javascript" // name có giá trị là "javascript"
+let year = 1995 // year có giá trị là 1995
 
 const author = "Brendan"
-const school = 'hcmue'
+const school; // school có giá trị là undefined
 ```
+
 
 ### let và const
 
 let va const là những từ khoá dùng để khai báo biến.
 
+- Những biến được khai báo bằng từ `let` và `const` không thể được khai báo lại
 
-
-```jsx
-let x = "John Doe"
-let x = 0;
-// SyntaxError: 'x' has already been declared
-
-const name = "lawson"
-const pi = 3.14
-
-let school = 'hcmue'
-school = 'qưeqwe'
-
-const pi = 3.14
-pi = 3.15
+```js
+let name = "John Doe"
+let name = "another name"
+// SyntaxError: 'name' has already been declared
 ```
 
-**Function**
+-> Biến `name` đã được khai báo trước đó nên khi đa khai báo `let name = "another name"` thì sẽ bị lỗi `SyntaxError: 'name' has already been declared`
 
-a set of statements that performs a task or calculates a value
+- Để thay đổi giá trị của một biến ta chỉ gán giá trị mới cho biến đó mà không cần phải khai báo lại.
+Ví dụ
 
-```jsx
-function square(number) {
-  return number * number;
-}
-
-function geating(name) {
-    console.log('Hello ', name)
-}
+```js
+let name = "Michael"
+console.log(name) // in ra màn hình là Michael
+name = "another name"
+console.log(name) // in ra màn hình là another name
 ```
 
-### Data types:
-
-- `undefiend`
-- `null`
-- `boolean`
-- `string`
-- `number`
-- `object`
-- `array`
-
-**Examples:**
-
-```jsx
-let foo; // undefiend
-let dog = null; // null
-let isCorrect = false; // boolean
-let name = "lawson"; //string
-let age = 30; // number
-let people = {job: "dev"}; // object
-let numbers = [1, 2, 3]; // array
+- Chúng ta không thể gán giá trị mới cho những biến đã được khai báo với từ khoá `const`
+```js
+const name = "Michael"
+console.log(name) // in ra màn hình là Michael
+name = "another name"
+// Uncaught TypeError: Assignment to constant variable.
 ```
 
-### Strings ( Chuỗi kí tự )
+### Function
 
-String được sử dụng để thể hiện cho văn bản, chúng được viết bên trong dấu ngoặc.
-
-```jsx
-const name = "lawson"
-const another_name = 'lawson nguyen'
-const text = `something`
-```
-
-Chúng ta có thể sử dụng dấu nháy đơn `'`, dấu nháy kép `''`, hoặc dấu backticks ` để đánh dấu `string`
-
-`'` `''` ` ⇒ quotes
-
- Hầu hết những gì nằm trong quotes là giá trị của một biến string. Nhưng có một số trường hợp đặc biệt ta cần phải chú ý sau:
-
-- Các quotes lồng:
-
-Ví dụ, trong trường hợp chúng ta muốn hiển thị một biến string như thế này  ”hello world”
-
-⇒ Chúng ta sẽ sử dụng các quotes khác để bọc bên vào chuỗi đó
+Khi chúng ta muốn tái sử dụng một đoạn code thay vì viết lại đoạn code đó ở nhiều nơi, chúng ta có thể đóng gói đoạn code đó vào một function và chỉ cần gọi function đó khi muốn sử dụng. Như vậy, function là tập hợp của những dòng lệnh (a set of statements) giúp chúng ta thực hiện một tác vụ hoặc tính toán một giá trị nào đó,
 
 Ví dụ:
 
-‘“hello world”’ ⇒ sử dụng nháy đơn bọc ngoài nháy kép
+```js
+const square = function(x) {
+  return x * x;
+};
 
-``"hello world"`` ⇒ sử dụng blackticks bọc ngoài nháy kép
+console.log(square(5)) // 25
 
-- Thêm kí tự xuống dòng vào chuỗi:
+const greeting = function(name, year) {
+  console.log('Hello ', name, year)
+}
 
-Ví dụ chúng ta muốn hiển thị một chuỗi như sau:
-
-This is my first line
-
-And this is my second line
-
-```jsx
-Note: 
-Trong một chuỗi kí tự dấu gạch chéo ngược \ thể hiện kí tự ngay sau nó
-mang một ý nghĩa đặc biệt.
-
-Việc viết dấu gách chéo ngược \ trước một kí tự, chúng ta gọi là escaping
+greeting('Alice', 2022) // Hello Alice 2022
 ```
 
-- `\n`: new line
+- Function được tạo ra bằng một biểu thức bắt đầu với tự khoá `function`
+- Function có thể không nhận vào đối số nào hoặc nhận vào một hoặc một vài đối số (parameters).
+Ví dụ: function `square` nhận vào một đối số là `x`, function `greeting` nhận vào 2 đối số là `name` và `year`
+- Phần thân funcion (Function body) chứa nhiều câu lệnh sẽ được thực thi khi function được gọi.
+- Từ khoá `return` cho ta biết được giá trị của function trả về.
+Ví dụ: Khi gọi `square(5)` thì giá trị trả về sẽ là 25 (return x * x => return 5 * 5)
 
-- `\t` tab
+### Kiểu dữ liệu (Data types)
 
-### Number
+### Numbers
 
-```jsx
+```js
 const year = 2022
 const pi = 3.14
 ```
 
 ### Operators ( Toán tử )
 
+![Value](https://github.com/lawson-ng/my-blog/blob/documents/public/JavaScript-Arithmetic-operators.jpeg?raw=true)
+
+
 1. **Arithmetic ( Số học )**
 
-![Untitled](Javascript%20e1e27/Untitled%202.png)
 
 ```jsx
 const a = 4
@@ -245,6 +211,54 @@ console.log(x >= 8)
   const checkNumber = (number) => number === 3.14 ? 'PI' : 'not PI'
   ```
 1. **Logical (Logic )**
+
+#### Strings ( Chuỗi kí tự )
+
+String được sử dụng để thể hiện cho văn bản, chúng được viết bên trong dấu ngoặc.
+
+```jsx
+const name = "lawson"
+const another_name = 'lawson nguyen'
+const text = `something`
+```
+
+Chúng ta có thể sử dụng dấu nháy đơn `'`, dấu nháy kép `''`, hoặc dấu backticks ` để đánh dấu `string`
+
+`'` `''` ` ⇒ quotes
+
+ Hầu hết những gì nằm trong quotes là giá trị của một biến string. Nhưng có một số trường hợp đặc biệt ta cần phải chú ý sau:
+
+- Các quotes lồng:
+
+Ví dụ, trong trường hợp chúng ta muốn hiển thị một biến string như thế này  ”hello world”
+
+⇒ Chúng ta sẽ sử dụng các quotes khác để bọc bên vào chuỗi đó
+
+Ví dụ:
+
+‘“hello world”’ ⇒ sử dụng nháy đơn bọc ngoài nháy kép
+
+``"hello world"`` ⇒ sử dụng blackticks bọc ngoài nháy kép
+
+- Thêm kí tự xuống dòng vào chuỗi:
+
+Ví dụ chúng ta muốn hiển thị một chuỗi như sau:
+
+This is my first line
+
+And this is my second line
+
+```jsx
+Note: 
+Trong một chuỗi kí tự dấu gạch chéo ngược \ thể hiện kí tự ngay sau nó
+mang một ý nghĩa đặc biệt.
+
+Việc viết dấu gách chéo ngược \ trước một kí tự, chúng ta gọi là escaping
+```
+
+- `\n`: new line
+
+- `\t` tab
 
 ### Array
 
