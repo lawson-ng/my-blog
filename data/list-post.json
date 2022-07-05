@@ -4,11 +4,5 @@
     "date": "1647081813066",
     "tags": ["javascript", "basic"],
     "file": "js-basic.md" 
-  },
-  {
-    "title": "Code smell",
-    "date": "1647081813066",
-    "tags": ["code smell", "refactoring"],
-    "file": "code-smell.md"
   }
 ]
